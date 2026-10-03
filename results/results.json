@@ -1,9 +1,9 @@
 {
   "ddpm": {
     "params": 875778,
-    "train_seconds": 43.31241449993104,
+    "train_seconds": 40.08998879999854,
     "train_peak_vram_mb": null,
-    "final_loss": 0.2687924106419086,
+    "final_loss": 0.26917346388101576,
     "config": {
       "steps": 2000,
       "batch_size": 2048,
@@ -14,73 +14,73 @@
       "seed": 0
     },
     "ancestral_noclip": {
-      "support_fraction": 0.72825,
-      "swd": 0.1158017857881313,
-      "mmd": 0.01323190808340845,
+      "support_fraction": 0.70865,
+      "swd": 0.21123373209082227,
+      "mmd": 0.00948844536167126,
       "nonfinite_fraction": 0.0,
       "nfe": 1000,
-      "latency_s": 54.06722339999396,
+      "latency_s": 54.18274990003556,
       "peak_vram_mb": null,
-      "max_abs": 2.377633810043335
+      "max_abs": 31.814918518066406
     },
     "sweep": [
       {
-        "support_fraction": 0.74695,
-        "swd": 0.19090765215864494,
-        "mmd": 0.06668175311138282,
+        "support_fraction": 0.73705,
+        "swd": 0.15457777744637685,
+        "mmd": 0.05703613761749038,
         "nonfinite_fraction": 0.0,
         "sampler": "ddim",
         "nfe": 10,
-        "latency_s": 0.8496324999723583,
+        "latency_s": 0.7790433000773191,
         "peak_vram_mb": null
       },
       {
-        "support_fraction": 0.77285,
-        "swd": 0.17941628492951867,
-        "mmd": 0.05236276409655672,
+        "support_fraction": 0.75625,
+        "swd": 0.17496161747410846,
+        "mmd": 0.05543631467639613,
         "nonfinite_fraction": 0.0,
         "sampler": "ddim",
         "nfe": 25,
-        "latency_s": 1.6163832999300212,
+        "latency_s": 1.590384199982509,
         "peak_vram_mb": null
       },
       {
-        "support_fraction": 0.7771,
-        "swd": 0.17981410252641558,
-        "mmd": 0.04962765208773381,
+        "support_fraction": 0.75155,
+        "swd": 0.1851048118155086,
+        "mmd": 0.05532650887619747,
         "nonfinite_fraction": 0.0,
         "sampler": "ddim",
         "nfe": 50,
-        "latency_s": 2.4174650999484584,
+        "latency_s": 2.6914160000160336,
         "peak_vram_mb": null
       },
       {
-        "support_fraction": 0.7777,
-        "swd": 0.18023765100056297,
-        "mmd": 0.048378530424158205,
+        "support_fraction": 0.7514,
+        "swd": 0.18818226582115213,
+        "mmd": 0.05460583063040646,
         "nonfinite_fraction": 0.0,
         "sampler": "ddim",
         "nfe": 100,
-        "latency_s": 4.6314146999502555,
+        "latency_s": 5.551929499953985,
         "peak_vram_mb": null
       },
       {
-        "support_fraction": 0.7789,
-        "swd": 0.18177327944694352,
-        "mmd": 0.048206709792616674,
+        "support_fraction": 0.7508,
+        "swd": 0.19219979780505786,
+        "mmd": 0.055226129797379495,
         "nonfinite_fraction": 0.0,
         "sampler": "ddim",
         "nfe": 250,
-        "latency_s": 11.429116999963298,
+        "latency_s": 13.488314900081605,
         "peak_vram_mb": null
       },
       {
-        "support_fraction": 0.73365,
-        "swd": 0.11590329241860384,
-        "mmd": 0.013187753703746061,
+        "support_fraction": 0.71775,
+        "swd": 0.09056331897326599,
+        "mmd": 0.009415509108950743,
         "nonfinite_fraction": 0.0,
         "nfe": 1000,
-        "latency_s": 47.54965120006818,
+        "latency_s": 58.550851800013334,
         "peak_vram_mb": null,
         "max_abs": 2.0,
         "sampler": "ddpm"
@@ -95,7 +95,7 @@
   },
   "rf": {
     "rf1": {
-      "train_seconds": 46.683548900065944,
+      "train_seconds": 48.549098500050604,
       "train_peak_vram_mb": null,
       "final_loss": 1.6967084622383117,
       "straightness": 0.9554493427276611,
@@ -109,7 +109,7 @@
           "sampler": "euler",
           "steps": 1,
           "nfe": 1,
-          "latency_s": 0.04839619994163513,
+          "latency_s": 0.050534899812191725,
           "peak_vram_mb": null,
           "max_abs": 1.39504075050354
         },
@@ -122,7 +122,7 @@
           "sampler": "euler",
           "steps": 2,
           "nfe": 2,
-          "latency_s": 0.2528415999840945,
+          "latency_s": 0.26505040004849434,
           "peak_vram_mb": null,
           "max_abs": 2.0560455322265625
         },
@@ -135,7 +135,7 @@
           "sampler": "euler",
           "steps": 5,
           "nfe": 5,
-          "latency_s": 0.4934235999826342,
+          "latency_s": 0.4630313999950886,
           "peak_vram_mb": null,
           "max_abs": 2.448160409927368
         },
@@ -148,7 +148,7 @@
           "sampler": "euler",
           "steps": 10,
           "nfe": 10,
-          "latency_s": 0.5887837999034673,
+          "latency_s": 0.6678774999454618,
           "peak_vram_mb": null,
           "max_abs": 2.6140215396881104
         },
@@ -161,7 +161,7 @@
           "sampler": "euler",
           "steps": 25,
           "nfe": 25,
-          "latency_s": 1.3708100999938324,
+          "latency_s": 1.3874846000690013,
           "peak_vram_mb": null,
           "max_abs": 2.7245535850524902
         },
@@ -174,7 +174,7 @@
           "sampler": "euler",
           "steps": 50,
           "nfe": 50,
-          "latency_s": 2.420007699984126,
+          "latency_s": 2.5677659001667053,
           "peak_vram_mb": null,
           "max_abs": 2.761319637298584
         },
@@ -187,7 +187,7 @@
           "sampler": "euler",
           "steps": 100,
           "nfe": 100,
-          "latency_s": 4.702899899915792,
+          "latency_s": 5.252991399960592,
           "peak_vram_mb": null,
           "max_abs": 2.778508186340332
         },
@@ -200,7 +200,7 @@
           "sampler": "euler",
           "steps": 250,
           "nfe": 250,
-          "latency_s": 11.518712199991569,
+          "latency_s": 12.501934400061145,
           "peak_vram_mb": null,
           "max_abs": 2.789097309112549
         },
@@ -213,7 +213,7 @@
           "sampler": "heun",
           "steps": 5,
           "nfe": 10,
-          "latency_s": 0.8105882999952883,
+          "latency_s": 0.6910987999290228,
           "peak_vram_mb": null,
           "max_abs": 2.8371078968048096
         },
@@ -226,7 +226,7 @@
           "sampler": "heun",
           "steps": 25,
           "nfe": 50,
-          "latency_s": 2.7263707999372855,
+          "latency_s": 2.594247799832374,
           "peak_vram_mb": null,
           "max_abs": 2.793823719024658
         },
@@ -239,16 +239,16 @@
           "sampler": "heun",
           "steps": 50,
           "nfe": 100,
-          "latency_s": 4.919154500006698,
+          "latency_s": 5.272410999983549,
           "peak_vram_mb": null,
           "max_abs": 2.79547119140625
         }
       ]
     },
     "rf2": {
-      "train_seconds": 44.55816430004779,
-      "pair_gen_seconds": 9.665541399968788,
-      "pipeline_seconds": 100.90725460008252,
+      "train_seconds": 50.197696099989116,
+      "pair_gen_seconds": 9.948038099799305,
+      "pipeline_seconds": 108.69483269983903,
       "train_peak_vram_mb": null,
       "n_pairs": 20000,
       "straightness": 0.0016061803326010704,
@@ -262,7 +262,7 @@
           "sampler": "euler",
           "steps": 1,
           "nfe": 1,
-          "latency_s": 0.0492807999253273,
+          "latency_s": 0.04714530007913709,
           "peak_vram_mb": null,
           "max_abs": 3.277710199356079
         },
@@ -275,7 +275,7 @@
           "sampler": "euler",
           "steps": 2,
           "nfe": 2,
-          "latency_s": 0.2559291000943631,
+          "latency_s": 0.28189429990015924,
           "peak_vram_mb": null,
           "max_abs": 3.170778751373291
         },
@@ -288,7 +288,7 @@
           "sampler": "euler",
           "steps": 5,
           "nfe": 5,
-          "latency_s": 0.43131729995366186,
+          "latency_s": 0.4230042998678982,
           "peak_vram_mb": null,
           "max_abs": 3.122710704803467
         },
@@ -301,7 +301,7 @@
           "sampler": "euler",
           "steps": 10,
           "nfe": 10,
-          "latency_s": 0.6335723000811413,
+          "latency_s": 0.733594800112769,
           "peak_vram_mb": null,
           "max_abs": 3.1118931770324707
         },
@@ -314,7 +314,7 @@
           "sampler": "euler",
           "steps": 25,
           "nfe": 25,
-          "latency_s": 1.3967858999967575,
+          "latency_s": 1.6148917998652905,
           "peak_vram_mb": null,
           "max_abs": 3.106593608856201
         },
@@ -327,7 +327,7 @@
           "sampler": "euler",
           "steps": 50,
           "nfe": 50,
-          "latency_s": 2.3991947000613436,
+          "latency_s": 2.600148899946362,
           "peak_vram_mb": null,
           "max_abs": 3.1046159267425537
         }
@@ -337,7 +337,7 @@
   "fno": {
     "params": 287425,
     "train_grid": 128,
-    "train_seconds": 25.62064959993586,
+    "train_seconds": 55.36209660000168,
     "train_peak_vram_mb": null,
     "config": {
       "epochs": 30,
@@ -394,22 +394,22 @@
     ],
     "cost": {
       "FNO @ N=128": {
-        "seconds": 0.01565547997597605,
+        "seconds": 0.016712160035967826,
         "peak_vram_mb": null,
         "rel_l2": 0.008244138211011887
       },
       "FNO @ N=1024": {
-        "seconds": 0.09060355997644365,
+        "seconds": 0.08949814001098275,
         "peak_vram_mb": null,
         "rel_l2": 0.008244321681559086
       },
       "solver @ N=128": {
-        "seconds": 0.2778823000844568,
+        "seconds": 0.2986518000252545,
         "peak_vram_mb": null,
         "rel_l2": 0.008390325371649804
       },
       "solver @ N=1024": {
-        "seconds": 5.017609899980016,
+        "seconds": 5.739185299957171,
         "peak_vram_mb": null,
         "rel_l2": 7.373414556013259e-08
       }
@@ -421,27 +421,27 @@
       "model": "DDPM",
       "title": "Mismatched noise schedule (train linear, sample cosine)",
       "induced_by": "Sampled the linear-schedule DDPM checkpoint with make_schedule('cosine').",
-      "symptom": "No error raised. Support 0.734 -> 0.657, SWD 0.116 -> 0.352 (3.0x); sample std 0.82 vs reference 1.15; centre-cell mass 0.173, corner 0.030 (true 0.125).",
+      "symptom": "No error raised. Support 0.718 -> 0.641, SWD 0.091 -> 0.329 (3.6x); sample std 0.85 vs reference 1.15; centre-cell mass 0.157, corner 0.031 (true 0.125).",
       "evidence_broken": {
-        "support_fraction": 0.65715,
-        "swd": 0.3520081965860419,
-        "mmd": 0.1136861300426469,
-        "sample_std": 0.8236421942710876,
+        "support_fraction": 0.64115,
+        "swd": 0.32946542344509205,
+        "mmd": 0.09789161520165895,
+        "sample_std": 0.8464038372039795,
         "reference_std": 1.1527838706970215,
-        "corner_cell_mass": 0.0297,
-        "centre_cell_mass": 0.1727,
-        "ddim50_swd": 0.29471310400847656,
-        "eps_mse_mid_t_cosine": 0.6585864424705505,
-        "eps_mse_mid_t_linear": 0.1009669229388237
+        "corner_cell_mass": 0.0313,
+        "centre_cell_mass": 0.1573,
+        "ddim50_swd": 0.22432616324924703,
+        "eps_mse_mid_t_cosine": 0.6483045220375061,
+        "eps_mse_mid_t_linear": 0.10075154155492783
       },
       "diagnosis": "Support fraction moves far less than SWD/MMD and per-cell mass, so it is not a sufficient check. Per-timestep eps-error under the sampling schedule is far above the training-schedule error at mid-range t, which isolates the cause to the t -> noise-level mapping, not the weights.",
       "root_cause": "The network is conditioned on the step index t, so it implicitly learns abar_t of the training schedule. Cosine keeps more signal at each t, so the model over-denoises and contracts samples toward the mean.",
       "repair": "Sample with the exact schedule used in training (the Part 1 linear schedule).",
       "evidence_repaired": {
-        "support_fraction": 0.73365,
-        "swd": 0.11590329241860384,
-        "mmd": 0.013187753703746061,
-        "sample_std": 1.0605236291885376,
+        "support_fraction": 0.71775,
+        "swd": 0.09056331897326599,
+        "mmd": 0.009415509108950743,
+        "sample_std": 1.0942250490188599,
         "metric_floor_swd": 0.016441601459996746
       },
       "guard": "checkpoint stores schedule_fingerprint (sha1 of betas); ddpm.check_schedule raises on mismatch and on abar_T > 1e-3. Report SWD/MMD, not support fraction alone."
@@ -467,7 +467,7 @@
       },
       "diagnosis": "LR range test shows a stable band and a cliff: above it the final loss equals the closed-form constant-predictor loss Var(x)+Var(z) and prediction spread -> 0. Gradient clipping at the same LR leaves the loss at 2.331, ruling out gradient magnitude as the lever.",
       "root_cause": "Adam's update is ~lr per parameter irrespective of gradient scale, so lr = 1.0 moves every weight by O(1) per step; weights blow up, activations saturate and the network becomes a constant function from which gradients cannot recover it.",
-      "repair": "lr = 1e-3 with 500-step linear warmup and cosine decay (stable band from range test: [0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03]).",
+      "repair": "lr = 1e-3 with 500-step linear warmup and cosine decay; range test: LRs that avoid collapse [0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03], lowest final loss at 1e-02.",
       "evidence_repaired": {
         "final_loss": 1.6967084622383117,
         "pred_to_target_std": 0.5211180155324444,
@@ -476,7 +476,7 @@
         "swd": 0.057534022622918415,
         "metric_floor_swd": 0.016441601459996746
       },
-      "guard": "LR range test before each new scale/architecture; abort a run whose loss stays within 5% of the closed-form constant-predictor loss; log parameter norm (100x baseline here) as a second alarm. Don't count on clipping with Adam."
+      "guard": "LR range test before each new scale/architecture; abort a run whose loss stays within 5% of the closed-form constant-predictor loss; log parameter norm (103x baseline here) as a second alarm. Don't count on clipping with Adam."
     },
     {
       "id": "F3",
@@ -507,5 +507,26 @@
       },
       "guard": "resolution_consistency(model, u0_fine, coarse) < 1e-2 at every deployment grid, checked in CI; always report error at more than one grid."
     }
-  ]
+  ],
+  "meta": {
+    "device": "cpu",
+    "device_name": null,
+    "quick": true,
+    "n_eval": 20000,
+    "n_test_cases": 200,
+    "torch": "2.14.0+cpu"
+  },
+  "recommendation": {
+    "operator_pilot": true,
+    "operator_checks": {
+      "as_accurate_as_coarse_solver": true,
+      "faster_than_coarse_solver": true,
+      "resolution_consistent": true
+    },
+    "operator_speedup_vs_coarse": 17.870329112604093,
+    "operator_speedup_vs_fine": 343.41373512492254,
+    "fno_rel_l2": 0.008244138211011887,
+    "coarse_rel_l2": 0.008390325371649804,
+    "generative_pick": "1-RF"
+  }
 }
