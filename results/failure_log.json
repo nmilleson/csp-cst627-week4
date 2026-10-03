@@ -1,0 +1,93 @@
+[
+  {
+    "id": "F1",
+    "model": "DDPM",
+    "title": "Mismatched noise schedule (train linear, sample cosine)",
+    "induced_by": "Sampled the linear-schedule DDPM checkpoint with make_schedule('cosine').",
+    "symptom": "No error raised. Support 0.734 -> 0.657, SWD 0.116 -> 0.352 (3.0x); sample std 0.82 vs reference 1.15; centre-cell mass 0.173, corner 0.030 (true 0.125).",
+    "evidence_broken": {
+      "support_fraction": 0.65715,
+      "swd": 0.3520081965860419,
+      "mmd": 0.1136861300426469,
+      "sample_std": 0.8236421942710876,
+      "reference_std": 1.1527838706970215,
+      "corner_cell_mass": 0.0297,
+      "centre_cell_mass": 0.1727,
+      "ddim50_swd": 0.29471310400847656,
+      "eps_mse_mid_t_cosine": 0.6585864424705505,
+      "eps_mse_mid_t_linear": 0.1009669229388237
+    },
+    "diagnosis": "Support fraction moves far less than SWD/MMD and per-cell mass, so it is not a sufficient check. Per-timestep eps-error under the sampling schedule is far above the training-schedule error at mid-range t, which isolates the cause to the t -> noise-level mapping, not the weights.",
+    "root_cause": "The network is conditioned on the step index t, so it implicitly learns abar_t of the training schedule. Cosine keeps more signal at each t, so the model over-denoises and contracts samples toward the mean.",
+    "repair": "Sample with the exact schedule used in training (the Part 1 linear schedule).",
+    "evidence_repaired": {
+      "support_fraction": 0.73365,
+      "swd": 0.11590329241860384,
+      "mmd": 0.013187753703746061,
+      "sample_std": 1.0605236291885376,
+      "metric_floor_swd": 0.016441601459996746
+    },
+    "guard": "checkpoint stores schedule_fingerprint (sha1 of betas); ddpm.check_schedule raises on mismatch and on abar_T > 1e-3. Report SWD/MMD, not support fraction alone."
+  },
+  {
+    "id": "F2",
+    "model": "Rectified flow (1-RF)",
+    "title": "Exploding learning rate",
+    "induced_by": "Adam lr = 1.0 with no warmup (baseline: lr = 1e-3, 500-step warmup); second run adds grad_clip = 1.0.",
+    "symptom": "Loss and grad-norm spike in the first logging window, then a calm-looking plateau at the constant-predictor loss; no NaN, so nothing crashes. Samples collapse.",
+    "evidence_broken": {
+      "peak_loss": 856.9600433683395,
+      "final_loss": 2.3385067987442016,
+      "constant_predictor_loss": 2.3219594955444336,
+      "peak_grad_norm": 338.45724730968476,
+      "pred_to_target_std": 0.1651772162337077,
+      "param_norm": 5426.1181640625,
+      "support_fraction": 0.0,
+      "swd": 8.560397727689828,
+      "with_clip_final_loss": 2.331371159553528,
+      "with_clip_pred_to_target_std": 0.0027782916700374227,
+      "with_clip_swd": 8.25639220395129
+    },
+    "diagnosis": "LR range test shows a stable band and a cliff: above it the final loss equals the closed-form constant-predictor loss Var(x)+Var(z) and prediction spread -> 0. Gradient clipping at the same LR leaves the loss at 2.331, ruling out gradient magnitude as the lever.",
+    "root_cause": "Adam's update is ~lr per parameter irrespective of gradient scale, so lr = 1.0 moves every weight by O(1) per step; weights blow up, activations saturate and the network becomes a constant function from which gradients cannot recover it.",
+    "repair": "lr = 1e-3 with 500-step linear warmup and cosine decay (stable band from range test: [0.0001, 0.0003, 0.001, 0.003, 0.01, 0.03]).",
+    "evidence_repaired": {
+      "final_loss": 1.6967084622383117,
+      "pred_to_target_std": 0.5211180155324444,
+      "param_norm": 52.47903060913086,
+      "support_fraction": 0.7838,
+      "swd": 0.057534022622918415,
+      "metric_floor_swd": 0.016441601459996746
+    },
+    "guard": "LR range test before each new scale/architecture; abort a run whose loss stays within 5% of the closed-form constant-predictor loss; log parameter norm (100x baseline here) as a second alarm. Don't count on clipping with Adam."
+  },
+  {
+    "id": "F3",
+    "model": "FNO-1d",
+    "title": "Resolution mismatch between training and evaluation grids",
+    "induced_by": "Coordinate channel built as grid index j instead of x = j/N; trained at N=128, evaluated at N = 32 .. 1024.",
+    "symptom": "Plausible error on the training grid (0.027) but 0.616 at N=1024 and 0.254 at N=64; no error raised.",
+    "evidence_broken": {
+      "rel_l2_N32": 0.4150093197822571,
+      "rel_l2_N64": 0.2544940114021301,
+      "rel_l2_N128": 0.027077477425336838,
+      "rel_l2_N256": 0.2811971604824066,
+      "rel_l2_N512": 0.4728683531284332,
+      "rel_l2_N1024": 0.615659236907959,
+      "consistency_gap": 0.6126899719238281
+    },
+    "diagnosis": "Error is minimal only at the training N and grows in both directions. Only the coordinate channel's values change with N (range [0, N-1]), so the pointwise lift sees out-of-distribution inputs; spectral layers are not the cause. Label-free resolution-consistency gap confirms it.",
+    "root_cause": "Coordinates in index units make the input distribution resolution-dependent, breaking the discretization invariance that the Fourier layers otherwise provide.",
+    "repair": "Use physical coordinates x_j = j/N on the periodic unit interval (FNO1d.grid).",
+    "evidence_repaired": {
+      "rel_l2_N32": 0.00906366016715765,
+      "rel_l2_N64": 0.008254737593233585,
+      "rel_l2_N128": 0.008244138211011887,
+      "rel_l2_N256": 0.008242923766374588,
+      "rel_l2_N512": 0.008243650197982788,
+      "rel_l2_N1024": 0.008244321681559086,
+      "consistency_gap": 0.0003814660885836929
+    },
+    "guard": "resolution_consistency(model, u0_fine, coarse) < 1e-2 at every deployment grid, checked in CI; always report error at more than one grid."
+  }
+]
